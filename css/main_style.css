@@ -1,12 +1,24 @@
-header, footer {
+header {
     padding: 0.5em; 
     color: white;
-    background-color: gray;
+    background-color: #dcbc71;
     clear: left;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+ footer {
+    padding: 0.5em; 
+    color: white;
+    background-color:  #dcbc71;
+    clear: left;
+	text-align: center;
 }
 h1.header {
-    padding: 0;
+   padding: 10px;
     margin: 0;
+    font-size: 50px;
+}
 }
 div#user {
     float: right;
@@ -28,22 +40,31 @@ ul {
     padding:0;
     margin:0;
     list-style-type:none;
-    background-color: lightblue;
+      background-color: #8a4208;
+	  color: white;
 }        
 a {
+		color: white !important;
+	text-decoration:none !important;
     float:left;
-    width:6em; /* Fix szélességű gombok érhetők el. Érdemes azonban vigyázni ezzel a módszerrel, mert ha a szöveg nem fér ki, a dizájn szétesik. */
-    text-decoration:none; /* Ne legyen aláhúzva a link. */
-    color:white;
-    background-color:navy;
+    width:8em; /* Fix szélességű gombok érhetők el. Érdemes azonban vigyázni ezzel a módszerrel, mert ha a szöveg nem fér ki, a dizájn szétesik. */
+     /* Ne legyen aláhúzva a link. */
+    background-color:#8a4208;
     padding:0.2em 0.6em;
     border-right:1px solid white;
+
+	font-weight: bold;
+	font-size: 18px;
 }
 a.selected{
-    background-color: blue;
+    background-color:  #cebdad;
+	color: white;
+	font-weight: bold;
+		font-size: 18px;
 }
-a:hover { background-color:#ff3300} /* Az egérkurzorra színváltással reagál a menüpont. */
-li { display:inline } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé kerüljenek. */
+}
+a:hover { background-color:#cebdad;} /* Az egérkurzorra színváltással reagál a menüpont. */
+li { display:inline; } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé kerüljenek. */
 
 #welcome {
     position: relative;
@@ -51,4 +72,77 @@ li { display:inline } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé k
 
 #welcome > img, .overlay-text {
     position: absolute;
+}
+.kulso
+{
+	position: relative;
+	margin: 10px;
+}
+.also
+{
+	position: absolute;
+bottom: 20px;
+	left:30px;
+	right:30px;
+	background-color: #dcbc71;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size: 25px;
+	padding: 5px;
+	max-height: 50px;
+	border-radius: 10px;
+}
+.container-fluid
+{
+	 background-color: #dcbc71;
+}
+.bekezdes
+{
+	margin: 20px;
+	font-size: 15px;
+	color: #8a4208;
+}
+.d-block.w-100
+{
+border: 3px solid #8a4208;
+}
+.kep, .d-block.w-100.fel
+{
+	max-width: 350px;
+	border: 2px solid #8a4208;
+	border-radius: 10px;
+}
+.fagyi, .egyéb
+{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+	margin: 10px;
+}
+.szoveg
+{
+	color: #8a4208;
+	font-size: 15px;
+	padding: 10px;
+	
+}
+.süti
+{display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+}
+@media only screen and (max-width: 500px) {
+	.also
+	{
+		font-size: 15px;
+		padding: 5px;
+	}
 }
