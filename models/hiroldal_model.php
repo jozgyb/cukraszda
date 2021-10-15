@@ -7,14 +7,16 @@ class Hiroldal_Model
 		
 		$retData['eredmeny'] = "";
 		$retData['uzenet'] =array();
+		$retData['kommi'] =array();
 	try
 	{
 		$connection = Database::getConnection();
-		$sql = "select * from hirek";
+		$sql = "SELECT hirek.id, hirek.nev, hirek.uzenet, hirek.datum, komment.kommentazonosito, komment.komment FROM hirek INNER JOIN komment ON hirek.id = komment.kommentazonosito
+ORDER BY komment.kommentazonosito ASC;";
 		$stmt = $connection->query($sql);
 		$stmt -> execute();
 		$hirek = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		
+	
 		if(count($hirek)==0) {
 		$retData['eredmeny'] = "ERROR";
 		$retData['uzenet'] = "Még nincs egy hír sem!";
@@ -24,9 +26,13 @@ class Hiroldal_Model
 				$retData['eredmeny'] = "OK";
 				foreach($hirek as $hir)
 				{
+				
 				array_push($retData['uzenet'],$hir['nev']."<br>".$hir['uzenet']."<br>".$hir['datum']);
-			
+				 array_push($retData['kommi'], $hir['komment']."<br>");
+		
+				
 				}
+				
 			Menu::setMenu();
 		}
 	
@@ -38,60 +44,31 @@ class Hiroldal_Model
 		}
 		return $retData;
 }
-public function lekeres2($vars)
-	{
-		
-		$retData['eredmeny'] = "";
-		$retData['komment'] =array();
-	try
-	{
-		$connection = Database::getConnection();
-		$sql = "SELECT * FROM komment ORDER BY kommentazonosito ASC;";
-		$stmt = $connection->query($sql);
-		$stmt -> execute();
-		$komm = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		
-		if(count($komm)==0) {
-		$retData['eredmeny'] = "ERROR";
-		$retData['komment'] = "Még egy komment sem!";
-		}
-		else
-		{
-				$retData['eredmeny'] = "OK";
-				foreach($komm as $kommi)
-				{
-				array_push($retData['komment'], $kommi['komment']."<br>");
-			
-				}
-			Menu::setMenu();
-		}
-	
-		}
 
-	catch (PDOException $e) {
-				
-					$retData['komment'] = "Adatbázis hiba: ".$e->getMessage()."!";
-		}
-		return $retData;
-}
 public function beuszras()
 {
+
+
 	try
 	{
 		$connection = Database::getConnection();
 		$datum=date("Y-m-d");
+
 		if(isset($_POST['nev']) && isset($_POST['uzenet']))
     {
-	
+
         $_POST['nev'] = trim($_POST['nev']);
         $_POST['uzenet'] = trim($_POST['uzenet']);
-
+		$_POST['tuntes'] = trim($_POST['tuntes']);
+       
        if($_POST['nev'] != "" && $_POST['uzenet'] != "")
      {
 
         $sql = "insert into hirek values (0, '".$_POST['nev']."', '".$_POST['uzenet']."', '".$datum."')";
+	
        $count = $connection->query($sql);
        $newid = $connection->lastInsertId();
+	   
 	   header("Refresh:0");
 	   
       }
