@@ -16,7 +16,7 @@
 <form method="post">
   <fieldset>
 <legend><h2>Regisztráció</h2></legend>
-<label for="Csaladi_nev">Családi_név:</label><input type="text" name="Csaladi_nev" id="login"><br>
+<label for="csaladi_nev">Családi_név:</label><input type="text" name="csaladi_nev" id="login"><br>
 <label for="utonev">Utónév:</label><input type="text" name="utonev" id="login"><br>
 <label for="bejelenkezes">Felhasználó:</label><input type="text" name="bejelenkezes" id="login"><br>
  <label for="password">Jelszó:</label><input type="password" name="jelszo" id="password" ><br>
