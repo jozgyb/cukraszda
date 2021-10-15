@@ -23,4 +23,4 @@ class Hiroldal_Controller
 
 	}
 }
-
+?>

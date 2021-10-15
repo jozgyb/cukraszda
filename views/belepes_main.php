@@ -13,7 +13,7 @@
 <h2><br><?= (isset($viewData['uzenet']) ? $viewData['uzenet'] : "") ?><br></h2>
 </div>
 <div class="regisztracio">
-<form method="post">
+<form action="<?= SITE_ROOT ?>regisztracio" method="post" name="regisztracio">
   <fieldset>
 <legend><h2>Regisztráció</h2></legend>
 <label for="csaladi_nev">Családi_név:</label><input type="text" name="csaladi_nev" id="login"><br>

@@ -1,7 +1,7 @@
 <?php
 class Regisztracio_Model
 {
-	public function get_data($vars)
+	public function regisztracio()
 	{
 		$retData['eredmeny'] = "";
 		$retData['uzenet'] = "";
@@ -17,22 +17,46 @@ class Regisztracio_Model
 
 		if($_POST['csaladi_nev'] != "" && $_POST['utonev'] != "" && $_POST['bejelenkezes'] != "" && $_POST['password'] != "")
         {
-
+            $retData['eredmeny'] = "OK";
+			$retData['uzenet'] = "Sikeres regisztráció";
 			$sql = "insert into felhasznalok values (0, '".$_POST['csaladi_nev']."', '".$_POST['utonev']."', '".$_POST['bejelenkezes']."', '".sha1($_POST['password'])."', '".$jogosultsag."')";
 
 			  $count = $connection->query($sql);
               $newid = $connection->lastInsertId();
 			
 			}
+			elseif($_POST['csaladi_nev'] == "" && $_POST['utonev'] == "" && $_POST['bejelenkezes'] == "" && $_POST['password'] == "")
+			{
+				  echo "Hiba: Nem adott meg egy adatot sem"; 
 			}
+			elseif($_POST['csaladi_nev'] == "" )
+			{
+				 echo "Hiba: Nem adott meg család nevet"; 
+			}
+			elseif($_POST['utonev'] == "" )
+			{
+				 echo "Hiba: Nem adott meg kereszt nevet"; 
+			}
+			elseif($_POST['bejelenkezes'] == "" )
+			{
+				 echo "Hiba: Nem adott meg felhasználónevet"; 
+			}
+			elseif($_POST['password'] == "" )
+			{
+				 echo "Hiba: Nem adott meg jelszót"; 
+			}
+			
+			}
+	
 		}
 		catch (PDOException $e) {
 			$retData['eredmény'] = "ERROR";
 					$retData['uzenet'] = "Adatbázis hiba: ".$e->getMessage()."!";
 		}
-		return $retData;
+
+	
 		
 	}
-	
+		
 }
 ?>

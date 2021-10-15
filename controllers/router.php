@@ -66,19 +66,4 @@ if (class_exists($class)) {
 
 $controller->main($vars);
 
-// __autoload f�ggv�ny, amely ismeretlen oszt�ly h�v�sokkor,
-// megpr�b�lja automatikusan bet�lteni a megfelel� f�jlt. 
-// A modellekhez haszn�ljuk, egys�gesen nevezz�k el f�jljainkat
-// (oszt�ly nev�vel megegyez�, csupa kisbet�s .php)
 
-// function __autoload($className)
-// {
-// 	$file = SERVER_ROOT.'models/'.strtolower($className).'.php';
-// 	if(file_exists($file))
-// 	{ include_once($file); }
-// 	else
-// 	{ die("File '$file' containing class '$className' not found."); }
-// }
-
-// set_include_path(get_include_path().PATH_SEPARATOR.SERVER_ROOT.'models/');
-// spl_autoload_extensions('.php, .inc');
