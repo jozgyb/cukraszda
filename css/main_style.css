@@ -1,7 +1,7 @@
 header {
     padding: 0.5em; 
     color: white;
-    background-color: #dcbc71;
+    background-color: #cbbcb2;
     clear: left;
 	font-size: 20px;
 	font-weight: bold;
@@ -10,7 +10,7 @@ header {
  footer {
     padding: 0.5em; 
     color: white;
-    background-color:  #dcbc71;
+    background-color:  #cbbcb2;
     clear: left;
 	text-align: center;
 }
@@ -18,6 +18,7 @@ h1.header {
    padding: 10px;
     margin: 0;
     font-size: 50px;
+	    background-color: #574c46;
 }
 }
 div#user {
@@ -40,7 +41,7 @@ ul {
     padding:0;
     margin:0;
     list-style-type:none;
-      background-color: #8a4208;
+      background-color: #574c46;
 	  color: white;
 }        
 a {
@@ -49,7 +50,7 @@ a {
     float:left;
     width:8em; /* Fix szélességű gombok érhetők el. Érdemes azonban vigyázni ezzel a módszerrel, mert ha a szöveg nem fér ki, a dizájn szétesik. */
      /* Ne legyen aláhúzva a link. */
-    background-color:#8a4208;
+    background-color:#574c46;
     padding:0.2em 0.6em;
     border-right:1px solid white;
 
@@ -84,7 +85,7 @@ li { display:inline; } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé 
 bottom: 20px;
 	left:30px;
 	right:30px;
-	background-color: #dcbc71;
+	background-color: #cbbcb2;
 	text-align: center;
 	color: white;
 	font-weight: bold;
@@ -95,22 +96,22 @@ bottom: 20px;
 }
 .container-fluid
 {
-	 background-color: #dcbc71;
+	 background-color: #cbbcb2;
 }
 .bekezdes
 {
 	margin: 20px;
 	font-size: 15px;
-	color: #8a4208;
+	color: #574c46;
 }
 .d-block.w-100
 {
-border: 3px solid #8a4208;
+border: 3px solid #574c46;
 }
 .kep, .d-block.w-100.fel
 {
 	max-width: 350px;
-	border: 2px solid #8a4208;
+	border: 2px solid #574c46;
 	border-radius: 10px;
 }
 .fagyi, .egyéb
@@ -125,7 +126,7 @@ border: 3px solid #8a4208;
 }
 .szoveg
 {
-	color: #8a4208;
+	color: #574c46;
 	font-size: 15px;
 	padding: 10px;
 	
@@ -168,7 +169,7 @@ border: 3px solid #8a4208;
 #gomb
 {
 	    color: white;
-    background-color: #8a4208;
+    background-color: #574c46;
     font-size: 20px;
     border-style: outset;
     border-radius: 10px;
@@ -190,16 +191,32 @@ border: 3px solid #8a4208;
 	    margin: 10px;
 }
 .tartalom {
-   border: 1px solid #8a4208;
-    width: 400px;
-    max-width: 400px;
+   border: 1px solid white;
+    width: 800px;
+    max-width: 800px;
     padding: 5px;
     color: white;
-    background-color: #8a4208;
+    background-color: #574c46;
 }
 
 .tartalom2
 {
     background-color: white;
-    padding: 30px;
+    padding: 20px;
+	height: 150px;
+}
+.komigomb
+{
+	float: right;
+    margin-right: 10px;
+    width: 150px;
+    max-width: 150px;
+    background-color: #cbbcb2;
+    color: white;tuntes
+    font-weight: bold;
+    border-radius: 5px;
+}
+.tuntes
+{
+display: none;
 }

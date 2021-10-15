@@ -4,6 +4,7 @@ class Hiroldal_Model
 {
 	public function lekeres($vars)
 	{
+		
 		$retData['eredmeny'] = "";
 		$retData['uzenet'] =array();
 	try
@@ -20,10 +21,11 @@ class Hiroldal_Model
 		}
 		else
 		{
-				$retData['eredmény'] = "OK";
+				$retData['eredmeny'] = "OK";
 				foreach($hirek as $hir)
 				{
-				array_push($retData['uzenet'], $hir['id']."<br>".$hir['nev']."<br>".$hir['uzenet']."<br>".$hir['datum']);
+				array_push($retData['uzenet'],$hir['nev']."<br>".$hir['uzenet']."<br>".$hir['datum']);
+			
 				}
 			Menu::setMenu();
 		}
@@ -33,6 +35,42 @@ class Hiroldal_Model
 	catch (PDOException $e) {
 				
 					$retData['uzenet'] = "Adatbázis hiba: ".$e->getMessage()."!";
+		}
+		return $retData;
+}
+public function lekeres2($vars)
+	{
+		
+		$retData['eredmeny'] = "";
+		$retData['komment'] =array();
+	try
+	{
+		$connection = Database::getConnection();
+		$sql = "SELECT * FROM komment ORDER BY kommentazonosito ASC;";
+		$stmt = $connection->query($sql);
+		$stmt -> execute();
+		$komm = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+		if(count($komm)==0) {
+		$retData['eredmeny'] = "ERROR";
+		$retData['komment'] = "Még egy komment sem!";
+		}
+		else
+		{
+				$retData['eredmeny'] = "OK";
+				foreach($komm as $kommi)
+				{
+				array_push($retData['komment'], $kommi['komment']."<br>");
+			
+				}
+			Menu::setMenu();
+		}
+	
+		}
+
+	catch (PDOException $e) {
+				
+					$retData['komment'] = "Adatbázis hiba: ".$e->getMessage()."!";
 		}
 		return $retData;
 }
@@ -54,6 +92,7 @@ public function beuszras()
         $sql = "insert into hirek values (0, '".$_POST['nev']."', '".$_POST['uzenet']."', '".$datum."')";
        $count = $connection->query($sql);
        $newid = $connection->lastInsertId();
+	   header("Refresh:0");
 	   
       }
        elseif($_POST['nev'] == "" && $_POST['uzenet'] == "")
@@ -70,6 +109,31 @@ public function beuszras()
        }
        }
 	}
+	catch (PDOException $e) {
+   echo "Hiba: ".$e->getMessage();
+  }
+}
+
+
+public function beszuraskomment()
+{
+	try
+	{
+		$connection = Database::getConnection();
+		
+		if(isset($_POST['komment']))
+    {
+	   $_POST['komment'] = trim($_POST['komment']);
+		$_POST['tuntes'] = trim($_POST['tuntes']);
+    
+       $sql = "insert into komment values (0, '".$_POST['komment']."','".$_POST['tuntes']."')";
+       $count = $connection->query($sql);
+       $newid = $connection->lastInsertId();
+	   header("Refresh:0");
+
+       }
+       }
+	
 	catch (PDOException $e) {
    echo "Hiba: ".$e->getMessage();
   }
