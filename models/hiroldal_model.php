@@ -11,8 +11,7 @@ class Hiroldal_Model
 	try
 	{
 		$connection = Database::getConnection();
-		$sql = "SELECT hirek.id, hirek.nev, hirek.uzenet, hirek.datum, komment.kommentazonosito, komment.komment FROM hirek INNER JOIN komment ON hirek.id = komment.kommentazonosito
-ORDER BY komment.kommentazonosito ASC;";
+		$sql = "SELECT * FROM hirek";
 		$stmt = $connection->query($sql);
 		$stmt -> execute();
 		$hirek = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,8 +27,7 @@ ORDER BY komment.kommentazonosito ASC;";
 				{
 				
 				array_push($retData['uzenet'],$hir['nev']."<br>".$hir['uzenet']."<br>".$hir['datum']);
-				 array_push($retData['kommi'], $hir['komment']."<br>");
-		
+			
 				
 				}
 				

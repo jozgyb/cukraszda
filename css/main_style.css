@@ -149,12 +149,12 @@ border: 3px solid #574c46;
 }
 .hiroldal
 {
-	display: flex;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 .sor
 {
@@ -178,7 +178,8 @@ border: 3px solid #574c46;
 }
 #nev
 {
-	   width: 390px;
+	  width: 500px;
+	  height: 50px;
 }
 .nevresz
 {
@@ -220,4 +221,28 @@ border: 3px solid #574c46;
 .tuntes
 {
 display: none;
+}
+.fej
+{
+text-align: center;
+    padding: 50px 20px;
+    margin-top: 10px;
+}
+legend {
+  background-color: #574c46;
+  color: white;
+  padding: 5px 10px !important; 
+}
+fieldset {
+  background-color: #e2e1df;
+      padding: 10px !important;
+}
+.hir
+{
+	 background-color: #574c46;
+	color: white;
+  padding: 0px 10px;
+  font-size: 40px;
+  margin-left: 0;
+  
 }
