@@ -17,12 +17,13 @@
  <p class="hir">Hírek<p>
  <?php
  $i=1;
+ var_dump($viewData['uzenet']);
  foreach($viewData['uzenet'] as $uzenet){
 	 ?><div class="nevresz">
 
 	 <div class="tartalom2">
 	 <?php
- echo $uzenet."<br>";
+	echo $uzenet."<br>";
  ?></div><div class="tartalom">
  <form method="post">
  <h5>Komment</h5>
@@ -30,7 +31,9 @@
  </form>
  </div>
 <?php
-
+		foreach($viewData['uzenet']['komment'] as $komment) {
+			echo $komment."<br>";
+		}
   ?>
  </div>
   <?php

@@ -7,13 +7,13 @@ class Regisztracio_Controller
 	{
 		//betöltjük a nézetet
 		$regisztracioModel = new Regisztracio_Model;
-		$regisztracioModel->regisztracio();
+		$retData = $regisztracioModel->regisztracio();
 		
-		/*$view = new View_Loader($this->baseName."_main");
+		$view = new View_Loader($this->baseName."_main");
 		foreach($retData as $name => $value)
 		{
 			$view->assign($name, $value);
-		}*/
+		}
 	}
 }
 ?>

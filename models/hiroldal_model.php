@@ -25,10 +25,16 @@ class Hiroldal_Model
 				$retData['eredmeny'] = "OK";
 				foreach($hirek as $hir)
 				{
-				
-				array_push($retData['uzenet'],$hir['nev']."<br>".$hir['uzenet']."<br>".$hir['datum']);
-			
-				
+					$sqlkomment = "SELECT komment FROM komment INNER JOIN Hirek ON hirek.id = komment.kommentazonosito WHERE
+					komment.kommentazonosito = ".$hir['id'];
+					$stmt = $connection->query($sqlkomment);
+					$stmt -> execute();
+					$kommentek = $stmt->fetchAll(PDO::FETCH_ASSOC);
+					//array_push($retData['uzenet'], array($hir['nev']."<br>".$hir['uzenet']."<br>".$hir['datum']));
+					array_push($retData['uzenet'], array(
+												'hir' => $hir['nev']."<br>".$hir['uzenet']."<br>".$hir['datum'],
+												'kommentek' => $kommentek
+										));
 				}
 				
 			Menu::setMenu();
