@@ -37,3 +37,4 @@ A kézműves süteményeink.
 
 <div class="egyéb">
 </div>
+<?php 	Menu::setMenu(); ?>

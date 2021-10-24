@@ -13,13 +13,13 @@
 <h2><br><?= (isset($viewData['uzenet']) ? $viewData['uzenet'] : "") ?><br></h2>
 </div>
 <div class="regisztracio">
-<form action="<?= SITE_ROOT ?>regisztracio" method="post" name="regisztracio">
+<form action="regisztracio" method="post" name="regisztracio">
   <fieldset>
 <legend><h2>Regisztráció</h2></legend>
-<label for="csaladi_nev">Családi_név:</label><input type="text" name="csaladi_nev" id="login"><br>
-<label for="utonev">Utónév:</label><input type="text" name="utonev" id="login"><br>
-<label for="bejelenkezes">Felhasználó:</label><input type="text" name="bejelenkezes" id="login"><br>
- <label for="password">Jelszó:</label><input type="password" name="jelszo" id="password" ><br>
+<label for="csaladi_nev">Családi név:</label><input type="text" name="csaladi_nev" id="csaladi_nev"><br>
+<label for="utonev">Utónév:</label><input type="text" name="utonev" id="utonev"><br>
+<label for="bejelentkezes">Felhasználó:</label><input type="text" name="bejelentkezes" id="bejelentkezes"><br>
+ <label for="jelszo">Jelszó:</label><input type="password" name="jelszo" id="jelszo" ><br>
     <input type="submit" class="gombi" value="Regisztáció"><br>
   </fieldset>
 </form>

@@ -20,10 +20,18 @@ h1.header {
     font-size: 50px;
 	    background-color: #574c46;
 }
-}
-div#user {
+
+div#user
+{
     float: right;
+    background-color: #574c46;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid white;
 }
+
 aside {
     float: left;
     width: 160px;
@@ -192,29 +200,27 @@ border: 3px solid #574c46;
 	    margin: 10px;
 }
 .tartalom {
-   border: 1px solid white;
-    width: 800px;
-    max-width: 800px;
-
+  
     padding: 5px;
-    color: white;
-    background-color: #574c46;
+    color: #574c46;
+    background-color: #e4e4e4;
 }
 
 .tartalom2
 {
     background-color: white;
     padding: 20px;
-	height: 150px;
 }
 .komigomb
 {
 	float: right;
     margin-right: 10px;
     width: 150px;
-    max-width: 150px;
+    padding: 10px;
+    margin-left: 5px;
+    font-size: 20px;
     background-color: #cbbcb2;
-    color: white;tuntes
+    color: white;
     font-weight: bold;
     border-radius: 5px;
 }
@@ -241,8 +247,25 @@ fieldset {
 {
 	 background-color: #574c46;
 	color: white;
-  padding: 0px 10px;
-  font-size: 40px;
-  margin-left: 0;
+  padding: 0 0 0 10px;
+  font-size: 30px;
+  margin-bottom: 0;
   
+}
+.hiroldal2
+{
+	margin-bottom:10px;
+}
+.kiir
+{
+	    padding: 10px;
+    background-color: #574c46;
+    color: white;
+    font-weight: bold;
+}
+.komm1
+{
+	background-color: #e4e4e4;
+    border: 1px solid white;
+	padding: 10px;
 }
