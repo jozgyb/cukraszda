@@ -71,8 +71,7 @@ a.selected{
 	font-weight: bold;
 		font-size: 18px;
 }
-}
-a:hover { background-color:#cebdad;} /* Az egérkurzorra színváltással reagál a menüpont. */
+nav ul li a:hover { background-color:#cebdad;} /* Az egérkurzorra színváltással reagál a menüpont. */
 li { display:inline; } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé kerüljenek. */
 
 #welcome {
