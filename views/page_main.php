@@ -14,7 +14,7 @@
     <header>
         <h1 class="header">J & G Cukrászda</h1>
     </header>
-    <nav class="navbar navbar-light">
+    <nav class="navbar p-0">
         <?php if (isset($_SESSION['bejelentkezes'])) { ?>
             <div id="user"><em><?= $_SESSION['userlastname'] . " " . $_SESSION['userfirstname'] . " " . $_SESSION['bejelentkezes'] ?> </em></div>
         <?php } ?>
