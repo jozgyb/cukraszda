@@ -95,12 +95,14 @@ bottom: 20px;
 	right:30px;
 	background-color: #cbbcb2;
 	text-align: center;
-	color: white;
+	color: #574c46;
 	font-weight: bold;
 	font-size: 25px;
 	padding: 5px;
 	max-height: 50px;
 	border-radius: 10px;
+	
+
 }
 .container-fluid
 {
@@ -115,12 +117,14 @@ bottom: 20px;
 .d-block.w-100
 {
 border: 3px solid #574c46;
+
 }
-.kep, .d-block.w-100.fel
+ .d-block.w-100.fel
 {
 	max-width: 350px;
 	border: 2px solid #574c46;
-	border-radius: 10px;
+	border-radius: 1000px;
+	margin-left: 10px;
 }
 .fagyi, .egyéb
 {
@@ -128,7 +132,7 @@ border: 3px solid #574c46;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 	margin: 10px;
 }
