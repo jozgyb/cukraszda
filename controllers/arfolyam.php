@@ -1,4 +1,3 @@
-
 <?php
 
 class Arfolyam_Controller
@@ -25,6 +24,7 @@ class Arfolyam_Controller
             $view->assign('napiArfolyam', $napiArfolyam);
             $currencies = explode(',', $_POST['dailyCurrencyNames']);
             $view->assign('dailyCurrencyNames', $currencies);
+            $view->assign('day', $_POST['day']);
         }
         if(isset($haviArfolyam))
         {

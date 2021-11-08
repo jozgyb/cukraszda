@@ -12,7 +12,6 @@ class Arfolyam_Model
     {
         $query = array('startDate' => $startDate, 'endDate' => $endDate, 'currencyNames' => $currencyNames);
         try {
-            
             $havi_arfolyam = (array)simplexml_load_string($this->client->GetExchangeRates($query)->GetExchangeRatesResult);
         } catch (SoapFault $e) {
             var_dump($e);

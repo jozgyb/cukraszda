@@ -52,7 +52,7 @@ ul {
       background-color: #574c46;
 	  color: white;
 }        
-a {
+nav ul li a {
 		color: white !important;
 	text-decoration:none !important;
     float:left;
@@ -65,7 +65,7 @@ a {
 	font-weight: bold;
 	font-size: 18px;
 }
-a.selected{
+nav ul li a.selected{
     background-color:  #cebdad;
 	color: white;
 	font-weight: bold;
@@ -84,7 +84,7 @@ li { display:inline; } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé 
 .kulso
 {
 	position: relative;
-	margin: 10px;
+	/* margin: 10px; */
 }
 .also
 {
