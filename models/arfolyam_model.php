@@ -29,4 +29,9 @@ class Arfolyam_Model
         }
         return $napi_arfolyam;
     }
+
+    public function getCurrencies()
+    {
+        return (array)simplexml_load_string($this->client->GetCurrencies()->GetCurrenciesResult);
+    }
 }

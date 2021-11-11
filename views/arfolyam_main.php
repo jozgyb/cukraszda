@@ -4,29 +4,43 @@
         $("#day").datepicker("option", "dateFormat", "yy-mm-dd");
     });
 </script>
-<form method="post">
-    <div class="col-auto">
-        <p>Napi árfolyam: <input class="form-control" type="text" id="day" name="day" placeholder="Válasszon napot árfolyamhoz:"></p>
+<form method="post" id="napiForm">
+    <div class="row">
+        <div class="form-floating mt-3 col-lg-2 mx-auto">
+            <input class="form-control" type="text" id="day" name="day">
+            <label for="day">Árfolyam nap:</label>
+        </div>
     </div>
-    <div class="col-auto">
-        <input class="form-control " id="dailyCurrencyNames" name="dailyCurrencyNames" placeholder="Adjon meg egy devizát:">
+    <div class="row">
+        <div class="form-floating mt-3 col-lg-2 mx-auto">
+            <!-- <input class="form-control " id="" name="dailyCurrencyNames">-->
+            <input class="form-control" list="currenciesAvailable" id="currencyDataList" name="currencyDataList">
+            <label for="currencyDataList">Adjon meg egy devizát:</label>
+            <datalist id="currenciesAvailable">
+                <?php foreach($viewData['currencies']['Currencies']->Curr as $curr)
+                {
+                    echo "<option value=\"{$curr}\">";
+                }?>
+            </datalist>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="row">
+        <button type="submit" class="btn btn-primary mx-auto col-lg-1 mt-3">Keresés</button>
+    </div>
 </form>
-<?php if (isset($viewData['dailyCurrencyNames']) && isset($viewData['napiArfolyam'])) { ?>
+<?php if (isset($viewData['currencyDataList']) && isset($viewData['napiArfolyam'])) { ?>
     <div>
         <p>
             <?php if (empty($viewData['napiArfolyam'])) {
-                $currencies = implode(", ", $viewData['dailyCurrencyNames']);
+                $currencies = implode(", ", $viewData['currencyDataList']);
                 echo "A megadott napra ({$viewData['day']}) és devizá(k)ra ({$currencies}) nem található árfolyam adat.";
             } else {
                 $chosen_day = $viewData['napiArfolyam']['Day']['date'];
                 echo "<br> {$chosen_day} <br>";
                 $rates = $viewData['napiArfolyam']['Day']->Rate;
                 $rateIndex = 0;
-                foreach($rates as $rate)
-                {
-                    $currencyName = $viewData['dailyCurrencyNames'][$rateIndex];
+                foreach ($rates as $rate) {
+                    $currencyName = $viewData['currencyDataList'][$rateIndex];
                     $rateIndex++;
                     echo "<br> {$currencyName} : {$rate} <br>";
                 }
