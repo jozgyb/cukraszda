@@ -2,7 +2,7 @@
 
 class Menu
 {
-    public static $visibleMenu = array();
+    private static $visibleMenu = array();
     public static $menu = array(
         'nyitolap' => array('nev' => 'Nyitólap', 'szulo' => '', 'jogosultsag' => '111', 'sorrend' => '10'),
         'hiroldal' => array('nev' => 'Híroldal', 'szulo' => '', 'jogosultsag' => '011', 'sorrend' => '25'),

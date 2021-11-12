@@ -8,25 +8,25 @@ class Arfolyam_Controller
     {
 
         $arfolyamModel = new Arfolyam_Model;
-        if(isset($_POST['day']) && isset($_POST['currencyDataList']))
+        if(!empty($_POST['day']) && !empty($_POST['currencyDataList']))
         {
             $napiArfolyam = $arfolyamModel->getDailyExchangeRates($_POST['day'], $_POST['currencyDataList']);
         }
-        if(isset($_POST['startDate']) && isset($_POST['endDate']) && isset($_POST['monthlyCurrencyNames']))
+        if(!empty($_POST['startDate']) && !empty($_POST['endDate']) && !empty($_POST['monthlyCurrencyNames']))
         {
             $haviArfolyam = $arfolyamModel->getMonthlyExchangeRates($_POST['startDate'], $_POST['endDate'], $_POST['monthlyCurrencyNames']);
         }
 
         $view = new View_Loader($this->baseName . "_main");
 
-        if(isset($napiArfolyam))
+        if(!empty($napiArfolyam))
         {
             $view->assign('napiArfolyam', $napiArfolyam);
             $currencies = explode(',', $_POST['currencyDataList']);
             $view->assign('currencyDataList', $currencies);
             $view->assign('day', $_POST['day']);
         }
-        if(isset($haviArfolyam))
+        if(!empty($haviArfolyam))
         {
             $view->assign('haviArfolyam', $haviArfolyam);
             $view->assign('monthlyCurrencyNames', $_POST['monthlyCurrencyNames']);
