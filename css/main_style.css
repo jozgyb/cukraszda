@@ -272,3 +272,7 @@ fieldset {
     border: 1px solid white;
 	padding: 10px;
 }
+
+table .ui-datepicker-calendar {
+    display: none;
+}

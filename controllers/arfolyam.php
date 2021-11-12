@@ -12,9 +12,12 @@ class Arfolyam_Controller
         {
             $napiArfolyam = $arfolyamModel->getDailyExchangeRates($_POST['day'], $_POST['currencyDataList']);
         }
-        if(!empty($_POST['startDate']) && !empty($_POST['endDate']) && !empty($_POST['monthlyCurrencyNames']))
+        if(!empty($_POST['month']) && !empty($_POST['monthlyCurrencyNames']))
         {
-            $haviArfolyam = $arfolyamModel->getMonthlyExchangeRates($_POST['startDate'], $_POST['endDate'], $_POST['monthlyCurrencyNames']);
+            $startDate = new DateTime($_POST['month'] . '-1');
+            $startDateString = $startDate->format('Y-m-d');
+            $endDateString = $startDate->format('Y-m-t');
+            $haviArfolyam = $arfolyamModel->getMonthlyExchangeRates($startDateString, $endDateString, $_POST['monthlyCurrencyNames']);
         }
 
         $view = new View_Loader($this->baseName . "_main");
@@ -28,11 +31,13 @@ class Arfolyam_Controller
         }
         if(!empty($haviArfolyam))
         {
-            $view->assign('haviArfolyam', $haviArfolyam);
+            $view->assign('haviArfolyam', $haviArfolyam['Day']);
             $view->assign('monthlyCurrencyNames', $_POST['monthlyCurrencyNames']);
         }
 
-        $availableCurrencies = $arfolyamModel->getCurrencies();
+        $availableCurrencies = $arfolyamModel->getCurrencies()['Currencies']->Curr;
+        // HUF törlése
+        unset($availableCurrencies[0]);
         $view->assign('currencies', $availableCurrencies);
     }
 }
