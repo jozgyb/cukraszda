@@ -56,7 +56,6 @@ class Hiroldal_Model
 		$stmt = $connection->query($sql);
 		$stmt -> execute();
 		$hirek = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 		if(count($hirek)==0)
 		{
 			$retData['eredmeny'] = "ERROR";
