@@ -5,6 +5,7 @@ class Menu
     private static $visibleMenu = array();
     public static $menu = array(
         'nyitolap' => array('nev' => 'Nyitólap', 'szulo' => '', 'jogosultsag' => '111', 'sorrend' => '10'),
+        'arlista' => array('nev' => 'Árlista', 'szulo' => '', 'jogosultsag' => '111', 'sorrend' => '20'),
         'hiroldal' => array('nev' => 'Híroldal', 'szulo' => '', 'jogosultsag' => '011', 'sorrend' => '25'),
         'arfolyam' => array('nev' => 'Árfolyam', 'szulo' => '', 'jogosultsag' => '111', 'sorrend' => '30'),
         'belepes' => array('nev' => 'Belépés', 'szulo' => '', 'jogosultsag' => '100', 'sorrend' => '60'),
