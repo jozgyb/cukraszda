@@ -2,13 +2,13 @@
     <div class="row">
         <div class="mt-3 col-lg-2">
             <div class="btn-group" role="group">
-                <input type="radio" class="btn-check" name="mentes" id="osszes" value="" checked>
+                <input type="radio" class="btn-check" name="mentes" id="osszes" value="" <?php if (isset($viewData['mentes']) && $viewData['mentes'] == '') { ?> checked <?php } ?>>
                 <label class="btn btn-outline-primary" for="osszes">Összes</label>
 
-                <input type="radio" class="btn-check" name="mentes" id="glutenmentes" value="G">
+                <input type="radio" class="btn-check" name="mentes" id="glutenmentes" value="G" <?php if (isset($viewData['mentes']) && $viewData['mentes'] == 'G') { ?> checked <?php } ?>>
                 <label class="btn btn-outline-primary" for="glutenmentes">Gluténmentes</label>
 
-                <input type="radio" class="btn-check" name="mentes" id="laktozmentes" value="L">
+                <input type="radio" class="btn-check" name="mentes" id="laktozmentes" value="L" <?php if (isset($viewData['mentes']) && $viewData['mentes'] == 'L') { ?> checked <?php } ?>>
                 <label class="btn btn-outline-primary" for="laktozmentes">Laktózmentes</label>
             </div>
         </div>
