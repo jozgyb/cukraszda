@@ -22,7 +22,7 @@ class Arfolyam_Controller
 
         $view = new View_Loader($this->baseName . "_main");
 
-        if(!empty($napiArfolyam))
+        if(isset($napiArfolyam))
         {
             $view->assign('napiArfolyam', $napiArfolyam);
             $currencies = explode(',', $_POST['currencyDataList']);
@@ -40,5 +40,9 @@ class Arfolyam_Controller
         // HUF törlése
         unset($availableCurrencies[0]);
         $view->assign('currencies', $availableCurrencies);
+
+        $limits = $arfolyamModel->getDateLimits();
+        $view->assign('FirstDate', $limits['FirstDate']);
+        $view->assign('LastDate', $limits['LastDate']);
     }
 }

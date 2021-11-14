@@ -30,6 +30,16 @@ class Arfolyam_Model
         return $napi_arfolyam;
     }
 
+    public function getDateLimits()
+    {
+        try {
+            $info = (array)simplexml_load_string($this->client->GetInfo()->GetInfoResult);
+        } catch (SoapFault $e) {
+            var_dump($e);
+        }
+        return array('FirstDate' => $info['FirstDate'], 'LastDate' => $info['LastDate']);
+    }
+
     public function getCurrencies()
     {
         return (array)simplexml_load_string($this->client->GetCurrencies()->GetCurrenciesResult);

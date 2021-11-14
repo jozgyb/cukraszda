@@ -2,7 +2,9 @@
     $(function() {
         $("#day").datepicker({
             changeMonth: true,
-            changeYear: true
+            changeYear: true,
+            minDate: new Date('<?php echo $viewData['FirstDate']; ?>'),
+            maxDate: new Date('<?php echo $viewData['LastDate']; ?>'),
         });
         $("#day").datepicker("option", "dateFormat", "yy-mm-dd");
     });
@@ -31,14 +33,19 @@
 </form>
 <?php if (isset($viewData['currencyDataList']) && isset($viewData['napiArfolyam'])) { ?>
     <div>
-        <p>
-            <?php if (empty($viewData['napiArfolyam'])) {
-                $currencies = implode(", ", $viewData['currencyDataList']);
-                echo "A megadott napra ({$viewData['day']}) és devizá(k)ra ({$currencies}) nem található árfolyam adat.";
-            } else {
-                $chosen_day = $viewData['napiArfolyam']['Day']['date'];
-                $rates = $viewData['napiArfolyam']['Day']->Rate;
-            ?>
+        <div class="row">
+            <div class="mt-3 col-lg-3 mx-auto">
+                <p>
+                    <?php if (empty($viewData['napiArfolyam'])) {
+                        $currencies = implode(", ", $viewData['currencyDataList']);
+                        echo "A megadott napra ({$viewData['day']}) és devizá(k)ra ({$currencies}) nem található árfolyam adat.";
+                    } else {
+                        $chosen_day = $viewData['napiArfolyam']['Day']['date'];
+                        $rates = $viewData['napiArfolyam']['Day']->Rate;
+                    ?>
+                </p>
+            </div>
+        </div>
         <div class="row">
             <div class="mt-3 col-lg-2 mx-auto">
                 <table class="table table-hover">
@@ -71,6 +78,8 @@
             changeMonth: true,
             changeYear: true,
             dateFormat: 'yy-mm',
+            minDate: new Date('<?php echo $viewData['FirstDate']; ?>'),
+            maxDate: new Date('<?php echo $viewData['LastDate']; ?>'),
 
             onClose: function() {
                 var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
