@@ -2,8 +2,8 @@
 
 class Menu
 {
-    private static $visibleMenu = array();
-    public static $menu = array(
+    public static $visibleMenu = array();
+    private static $menu = array(
         'nyitolap' => array('nev' => 'Nyitólap', 'szulo' => '', 'jogosultsag' => '111', 'sorrend' => '10'),
         'arlista' => array('nev' => 'Árlista', 'szulo' => '', 'jogosultsag' => '111', 'sorrend' => '20'),
         'hiroldal' => array('nev' => 'Híroldal', 'szulo' => '', 'jogosultsag' => '011', 'sorrend' => '25'),
@@ -20,6 +20,11 @@ class Menu
                 self::$visibleMenu[$url] = array($menuData['nev'], $menuData['szulo'], $menuData['jogosultsag']);
             }
         }
+    }
+
+    public static function isAuthorizedToLoadPage($url)
+    {
+        return preg_match($_SESSION['userlevel'], self::$menu[$url]['jogosultsag'], $match);
     }
 
     public static function getMenu($sItems)

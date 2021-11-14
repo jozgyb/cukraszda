@@ -10,7 +10,7 @@ session_start();
 if (!isset($_SESSION['userid'])) $_SESSION['userid'] = 0;
 if (!isset($_SESSION['userfirstname'])) $_SESSION['userfirstname'] = "";
 if (!isset($_SESSION['userlastname'])) $_SESSION['userlastname'] = "";
-if (!isset($_SESSION['userlevel'])) $_SESSION['userlevel'] = "/1[0-1][0-1]/";
+if (!isset($_SESSION['userlevel'])) $_SESSION['userlevel'] = "/1\d\d/";
 
 include(SERVER_ROOT . 'includes/database.inc.php');
 include(SERVER_ROOT . 'includes/menu.inc.php');
@@ -28,10 +28,10 @@ if ($request != "") {
 	$params = explode('/', $request);
 	$page = array_shift($params); // a k�rt oldal neve
 
-	if (array_key_exists($page, Menu::$menu) && count($params) > 0) // Az oldal egy men�pont oldala �s van m�g adat az url-ben
+	if (array_key_exists($page, Menu::$visibleMenu) && count($params) > 0) // Az oldal egy men�pont oldala �s van m�g adat az url-ben
 	{
 		$subpage = array_shift($params); // a k�rt aloldal
-		if (!(array_key_exists($subpage, Menu::$menu) && Menu::$menu[$subpage][1] == $page)) // ha nem egy alolal
+		if (!(array_key_exists($subpage, Menu::$visibleMenu) && Menu::$visibleMenu[$subpage][1] == $page)) // ha nem egy alolal
 		{
 			$vars[] = $subpage; // akkor ez egy parameter
 			$subpage = ""; // �s nincs aloldal
@@ -51,7 +51,7 @@ if ($request != "") {
 
 $controllerfile = $page . ($subpage != "" ? "_" . $subpage : "");
 $target = SERVER_ROOT . 'controllers/' . $controllerfile . '.php';
-if (!file_exists($target)) {
+if (!file_exists($target) || !Menu::isAuthorizedToLoadPage($request)) {
 	$controllerfile = "error404";
 	$target = SERVER_ROOT . 'controllers/error404.php';
 }
