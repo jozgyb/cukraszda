@@ -1,4 +1,5 @@
 <?php
+require_once('../includes/database.inc.php');
 class Suti
 {
     /**
@@ -37,22 +38,6 @@ class Sutik
 
 class SutiInterface
 {
-    private static $db_handler;
-
-    public static function getConnection()
-    {
-        if (!self::$db_handler) {
-            self::$db_handler = new PDO(
-                'mysql:host=localhost;dbname=cuki_soap',
-                'root',
-                '',
-                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-            );
-            self::$db_handler->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
-        }
-        return self::$db_handler;
-    }
-
     /**
      *  @param string $allergen
      *  @return Sutik
@@ -61,8 +46,6 @@ class SutiInterface
     {
         $query = "SELECT nev, tipus, dijazott, mentes, egyseg, ertek FROM suti JOIN tartalom ON suti.id = tartalom.sutiid JOIN ar ON suti.id = ar.sutiid GROUP BY nev HAVING tartalom.mentes like '%{$allergen}%'";
 
-        return array('sutik' => self::$db_handler->query($query)->fetchAll(PDO::FETCH_ASSOC));
+        return array('sutik' => Database::getConnection()->query($query)->fetchAll(PDO::FETCH_ASSOC));
     }
 }
-
-SutiInterface::getConnection();
