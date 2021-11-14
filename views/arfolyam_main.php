@@ -153,8 +153,8 @@
             labels: labels,
             datasets: [{
                 label: <?php echo "'{$viewData['monthlyCurrencyNames']}'"; ?>,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgb(87, 76, 70)',
+                borderColor: 'rgb(87, 76, 70)',
                 data: rateJson,
             }]
         };
