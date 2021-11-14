@@ -122,16 +122,53 @@
                     <th><?php echo $viewData['monthlyCurrencyNames']; ?></th>
                 </thead>
                 <tbody>
-                    <?php foreach ($viewData['haviArfolyam'] as $nap => $xml) { ?>
+                    <?php
+                    $ratesForGraphicon = array();
+                    foreach ($viewData['haviArfolyam'] as $nap => $xml) { ?>
                         <tr>
                             <td><?php print($xml['date']); ?></td>
-                            <?php foreach ($xml->Rate as $rate) { ?>
-                                <td><?php echo $rate . " HUF"; ?></td>
-                            <?php } ?>
+                            <?php foreach ($xml->Rate as $rate) {
+                                array_push($ratesForGraphicon, str_replace(",", ".", $rate));
+                                echo "<td>{$rate} HUF</td>";
+                            } ?>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
+    <div class="row">
+        <div class="mt-3 col-lg-6 mx-auto">
+            <canvas id="arfolyamChart"></canvas>
+        </div>
+    </div>
+    <script>
+        const labels = [
+            <?php foreach ($viewData['haviArfolyam'] as $nap => $xml) {
+                echo "'{$xml['date']}',";
+            } ?>
+        ];
+        const rateJson = <?php echo json_encode($ratesForGraphicon); ?>;
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: <?php echo "'{$viewData['monthlyCurrencyNames']}'"; ?>,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: rateJson,
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        const myChart = new Chart(
+            document.getElementById('arfolyamChart'),
+            config
+        );
+    </script>
+
 <?php } ?>

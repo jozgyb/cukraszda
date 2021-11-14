@@ -31,7 +31,8 @@ class Arfolyam_Controller
         }
         if(!empty($haviArfolyam))
         {
-            $view->assign('haviArfolyam', $haviArfolyam['Day']);
+            $rendezettArfolyam = array_reverse($haviArfolyam['Day']);
+            $view->assign('haviArfolyam', $rendezettArfolyam);
             $view->assign('monthlyCurrencyNames', $_POST['monthlyCurrencyNames']);
         }
 
