@@ -24,6 +24,8 @@ class Menu
 
     public static function isAuthorizedToLoadPage($url)
     {
+        if (!array_key_exists($url, self::$menu))
+            return true;
         return preg_match($_SESSION['userlevel'], self::$menu[$url]['jogosultsag'], $match);
     }
 
